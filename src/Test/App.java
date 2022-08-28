@@ -2,31 +2,32 @@ package Test;
 
 
 import TdaLista.Lista;
+import TdaLista.SList;
 
 public class App {
     public static void main(String[] args) {
         Lista<Integer> listaNumeros= new Lista<>();
+        SList listaNumerosE = new SList();
 
-        int dato = 11;
 
-        for(int i = 0; i < 20; i ++){
-            listaNumeros.append(dato);
-            dato++;
+
+        int dato = 1;
+
+        for(int i = 0; i < 20; i++){
+            listaNumerosE.append(dato);
+            dato ++;
         }
 
 
-        System.out.println(listaNumeros);
-        System.out.println(listaNumeros.size());
 
-        dato = 11;
-        for(int i = 0; i < 20; i ++){
-            System.out.println(listaNumeros.buscar(dato));
-            dato++;
-        }
 
-        listaNumeros.appendComienzo(10);
-        listaNumeros.appendEntre(10,11);
+        System.out.println(listaNumerosE);
 
-        System.out.println(listaNumeros);
+
+
+
+
+
+
     }
 }
