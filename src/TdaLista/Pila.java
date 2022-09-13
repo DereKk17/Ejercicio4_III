@@ -57,23 +57,4 @@ public class Pila<T> {
         return Pila;
     }
 
-    public int obtenerIndiceDe(T dato){
-        Nodo siguiente = new Nodo();
-        Nodo anterior = new Nodo();
-        siguiente.setSiguiente(cima);
-        anterior.setSiguiente(siguiente);
-
-        int indice = 0;
-        while(siguiente.getSiguiente() != null){
-
-            if((siguiente.getDato() == dato)) {
-                break;
-            }
-
-            siguiente = siguiente.getSiguiente();
-            anterior = anterior.getSiguiente();
-            indice ++;
-        }
-        return (size - 1)-(indice - 1) ;
-    }
 }
