@@ -8,7 +8,7 @@ import TdaLista.SList;
 public class App {
     public static void main(String[] args) {
 
-        Pila<Integer> miPila = new Pila<>();
+        SPila<Integer> miPila = new SPila<>();
 
         int numero = 11;
 
@@ -21,12 +21,6 @@ public class App {
 
         miPila.limpiar();
 
-        System.out.println(miPila);
-
-        for (int i = 0; i < 10; i++){
-            miPila.push(numero);
-            numero ++;
-        }
         System.out.println(miPila);
 
 
