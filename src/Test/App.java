@@ -16,6 +16,7 @@ public class App {
             miPila.push(numero);
             numero ++;
         }
+        miPila.push(200);
 
 
 
