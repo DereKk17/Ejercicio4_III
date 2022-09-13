@@ -2,16 +2,16 @@ package TdaLista;
 
 public class Pila<T> {
 
-    private Nodo inicio;
+    private Nodo cima;
     private int size;
     Nodo nodo = new Nodo();
 
     public boolean estaVacia(){
-        return inicio ==  null;
+        return cima ==  null;
     }
 
     public boolean estaLlena(){
-        return !(inicio ==  null);
+        return !(cima ==  null);
     }
 
     public int size() {
@@ -23,32 +23,57 @@ public class Pila<T> {
         nuevo.setDato(dato);
 
         if(estaVacia())
-            inicio.setSiguiente(nuevo);
+            cima = nuevo;
         else{
-            nuevo.setSiguiente(inicio);
-            inicio = nuevo;
+            nuevo.setSiguiente(cima);
+            cima = nuevo;
         }
         size++;
     }
 
-    public Object pop(){
+    public void pop(){
         if(estaVacia())
             System.out.printf("Pila Vacia");
-        inicio.setSiguiente(null);
-        size --;
+        else
+            cima = cima.getSiguiente();
+             size --;
 
-        return inicio;
     }
 
     public Object peek(){
-        return inicio.getDato();
+        return cima.getDato();
+    }
+
+    public void limpiar(){
+        cima = null;
+        size =0;
     }
 
     public String toString(){
-        String lista = "";
-        for(Nodo n = inicio; n != null; n = n.getSiguiente()){
-            lista = lista + "\n " + n.getDato();
+        String Pila = "";
+        for(Nodo n = cima; n != null; n = n.getSiguiente()){
+            Pila = Pila + "\n " + n.getDato();
         }
-        return lista;
+        return Pila;
+    }
+
+    public int obtenerIndiceDe(T dato){
+        Nodo siguiente = new Nodo();
+        Nodo anterior = new Nodo();
+        siguiente.setSiguiente(cima);
+        anterior.setSiguiente(siguiente);
+
+        int indice = 0;
+        while(siguiente.getSiguiente() != null){
+
+            if((siguiente.getDato() == dato)) {
+                break;
+            }
+
+            siguiente = siguiente.getSiguiente();
+            anterior = anterior.getSiguiente();
+            indice ++;
+        }
+        return (size - 1)-(indice - 1) ;
     }
 }

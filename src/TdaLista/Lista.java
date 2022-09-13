@@ -36,7 +36,7 @@ public class Lista<T> {
         nuevo.setDato(dato);
 
         if(isEmpty())
-            inicio.setSiguiente(nuevo);
+            inicio = nuevo;
         else{
             nuevo.setSiguiente(inicio);
             inicio = nuevo;

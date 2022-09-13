@@ -1,6 +1,7 @@
 package Test;
 
 import TdaLista.Pila;
+import TdaLista.SPila;
 import TdaLista.Lista;
 import TdaLista.SList;
 
@@ -9,8 +10,23 @@ public class App {
 
         Pila<Integer> miPila = new Pila<>();
 
-        miPila.push(6);
+        int numero = 11;
 
+        for (int i = 0; i < 10; i++){
+            miPila.push(numero);
+            numero ++;
+        }
+
+
+
+        miPila.limpiar();
+
+        System.out.println(miPila);
+
+        for (int i = 0; i < 10; i++){
+            miPila.push(numero);
+            numero ++;
+        }
         System.out.println(miPila);
 
 
