@@ -1,14 +1,11 @@
 package Test;
 
 import TdaLista.Pila;
-import TdaLista.SPila;
-import TdaLista.Lista;
-import TdaLista.SList;
 
 public class App {
     public static void main(String[] args) {
 
-        SPila<Integer> miPila = new SPila<>();
+        Pila<Integer> miPila = new Pila<>();
 
         int numero = 11;
 
@@ -19,10 +16,9 @@ public class App {
         miPila.push(200);
 
 
-
-        miPila.limpiar();
-
         System.out.println(miPila);
+
+        miPila.
 
 
 
