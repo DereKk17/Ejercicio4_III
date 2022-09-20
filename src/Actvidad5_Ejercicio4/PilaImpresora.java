@@ -6,7 +6,7 @@ public class PilaImpresora {
 
     Pila<PeticionImpresion> pila;
 
-    public PilaImpresora(Pila<PeticionImpresion> pila){
+    public PilaImpresora(){
         this.pila = new Pila<>();
     }
 
@@ -18,42 +18,53 @@ public class PilaImpresora {
         return pila.size();
     }
 
+    public PeticionImpresion cima(){
+        return (PeticionImpresion) pila.peek();
+    }
+
     public void printWork(){
-        Pila<PeticionImpresion> pilaAux = pila;
-        invertirPila(0, pilaAux);
+
+        Pila<PeticionImpresion> pilaAux = pila.invertir();
 
         PeticionImpresion impresion = (PeticionImpresion) pilaAux.peek();
         System.out.println(impresion.getId()+ "  " + impresion.getNombreArchivo());
 
         pilaAux.pop();
 
-        pila = pilaAux;
-        invertirPila(0, pila);
-    }
-
-    public Pila invertirPila(int i, Pila pilaAux){
-        if(i == pila.size()){
-            return pilaAux;
-        }
-        else{
-            pilaAux.push(pila.peek());
-            pila.pop();
-            return invertirPila(i + 1, pilaAux);
-        }
+        pila = pilaAux.invertir();
 
     }
 
-    public String printAll(int i, String peticiones, Pila pila){
-        if(i > pila.size()){
-            return peticiones;
+
+    public void printAll(){
+        if(pila.size() == 0){
+            System.out.println("NO HAY IMPRESIONES PENDIENTES");;
         }else{
-            PeticionImpresion impresion = (PeticionImpresion) pila.peek();
-            peticiones += (impresion.getId()+ "  " + impresion.getNombreArchivo());
+            Pila<PeticionImpresion> pilaAux = pila.invertir();
 
-            pila.pop();
+            PeticionImpresion impresion = (PeticionImpresion) pilaAux.peek();
+            System.out.println(impresion.getId()+ "  " + impresion.getNombreArchivo());
+            pilaAux.pop();
 
-            invertirPila(0, pila);
-            return printAll(i + 1, peticiones, pila);
+            pila = pilaAux.invertir();
+            printAll();
+        }
+    }
+
+    public void showAll(int i, int tamanioPila){
+        if(i >= tamanioPila){
+            System.out.println("PETICIONES PENDIENTES");
+        }else{
+            Pila<PeticionImpresion> pilaAux = pila;
+
+            System.out.println(pila.size());
+
+            PeticionImpresion impresion = (PeticionImpresion) pilaAux.peek();
+            System.out.println(impresion.getId()+ "  " + impresion.getNombreArchivo());
+            pilaAux.pop();
+
+
+            showAll(i + 1, tamanioPila);
         }
     }
 

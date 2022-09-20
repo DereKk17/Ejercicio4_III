@@ -33,10 +33,10 @@ public class Pila<T> {
     public void pop(){
         if(estaVacia())
             System.out.printf("Pila Vacia");
-        else
+        else {
             cima = cima.getSiguiente();
-             size --;
-
+            size--;
+        }
     }
 
     public Object peek(){
@@ -46,6 +46,19 @@ public class Pila<T> {
     public void limpiar(){
         cima = null;
         size =0;
+    }
+
+    public Pila invertir(){
+        Nodo temporal = cima;
+
+        Pila invertida = new Pila();
+
+        while(estaLlena()){
+            invertida.push(cima.getDato());
+            cima = cima.getSiguiente();
+        }
+        cima = temporal;
+        return invertida;
     }
 
     public String toString(){
