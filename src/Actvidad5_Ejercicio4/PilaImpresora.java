@@ -51,20 +51,22 @@ public class PilaImpresora {
         }
     }
 
-    public void showAll(int i, int tamanioPila){
+    public void showAll(int i, int tamanioPila, Pila pilaBorrados){
         if(i >= tamanioPila){
+            pila = pilaBorrados.invertir();
             System.out.println("PETICIONES PENDIENTES");
         }else{
+
             Pila<PeticionImpresion> pilaAux = pila;
 
             System.out.println(pila.size());
 
             PeticionImpresion impresion = (PeticionImpresion) pilaAux.peek();
             System.out.println(impresion.getId()+ "  " + impresion.getNombreArchivo());
-            pilaAux.pop();
 
+             pilaBorrados.push(pilaAux.pop());
 
-            showAll(i + 1, tamanioPila);
+            showAll(i + 1, tamanioPila, pilaBorrados);
         }
     }
 

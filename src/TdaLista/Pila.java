@@ -30,13 +30,16 @@ public class Pila<T> {
         size++;
     }
 
-    public void pop(){
+    public Object pop(){
+        Nodo borrado = new Nodo();
         if(estaVacia())
             System.out.printf("Pila Vacia");
         else {
+            borrado = cima;
             cima = cima.getSiguiente();
             size--;
         }
+        return borrado.getDato();
     }
 
     public Object peek(){
